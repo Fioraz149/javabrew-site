@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaBrew – Speisekarte</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <a class="logo" href="index.html">JavaBrew</a>
+            <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu">&#9776;</button>
+            <ul id="menu" class="nav__menu">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="menu.html">Speisekarte</a></li>
+                <li><a href="booking.html">Reservierung</a></li>
+                <li><a href="contact.html">Kontakte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Speisekarte</h1>
+
+        <div class="filters" style="margin-bottom:1rem; display:flex; gap:.5rem; flex-wrap:wrap;">
+            <button data-filter="alle" class="btn">Alle</button>
+            <button data-filter="kaffee" class="btn">Kaffee</button>
+            <button data-filter="desserts" class="btn">Desserts</button>
+            <button data-filter="frühstück" class="btn">Frühstück</button>
+        </div>
+
+        <div class="grid menu-grid">
+            <!-- Kaffee -->
+            <article class="card item" data-category="kaffee">
+                <img src="images/kaffee-unterschiede-kaffee-und-espresso-02.webp" alt="Espresso" width="200">
+                <h3>Heiße Getränke</h3>
+                <p>Espresso</p><strong>2,50 €</strong>
+            </article>
+
+            <article class="card item" data-category="kaffee">
+                <img src="images/milchschaum-in-weißer-tasse.jpeg" alt="Milchschaum" width="200">
+                <h3>Heiße Getränke</h3>
+                <p>Milchschaum</p><strong>1,50 €</strong>
+            </article>
+
+            <article class="card item" data-category="kaffee">
+                <img src="images/Sugar_Free_Classic_Caramel_Cappuccino.jpg.webp" alt="Karamell-Cappuccino" width="200">
+                <h3>Heiße Getränke</h3>
+                <p>Karamell-Cappuccino</p><strong>3,00 €</strong>
+            </article>
+
+            <article class="card item" data-category="kaffee">
+                <img src="images/020-a.jpg.webp" alt="Grüner und Schwarzer Tee" width="200">
+                <h3>Heiße Getränke</h3>
+                <p>Grüner Tee, Schwarzer Tee</p><strong>1,99 €</strong>
+            </article>
+
+            <article class="card item" data-category="kaffee">
+                <img src="images/csm_Matcha_1_bda764e3fe.jpg" alt="Matcha" width="200">
+                <h3>Heiße Getränke</h3>
+                <p>Matcha</p><strong>4,50 €</strong>
+            </article>
+
+            <!-- Desserts -->
+            <article class="card item" data-category="desserts">
+                <img src="images/Der-beste-Kaesekuchen-Rezept.jpg" alt="Käsekuchen" width="280">
+                <h3>Käsekuchen</h3>
+                <p>Klassisch</p><strong>4,99 €</strong>
+            </article>
+
+            <article class="card item" data-category="desserts">
+                <img src="images/schoko-muffins-featured.jpg" alt="Schoko-Muffin" width="280">
+                <h3>Schoko-Muffin</h3>
+                <p>Klassisch</p><strong>4,00 €</strong>
+            </article>
+
+            <article class="card item" data-category="desserts">
+                <img src="images/CroissantNatur.jpg.webp" alt="Croissant" width="280">
+                <h3>Croissant</h3>
+                <p>Blätterteig</p><strong>4,50 €</strong>
+            </article>
+
+            <article class="card item" data-category="desserts">
+                <img src="images/kirschkuchen.jpg" alt="Kirschkuchen" width="280">
+                <h3>Kirschkuchen</h3>
+                <p>Klassisch</p><strong>3,80 €</strong>
+            </article>
+
+            <!-- Frühstück (пример) -->
+            <article class="card item" data-category="frühstück">
+                <img src="images/avocado-toast.jpg" alt="Avocado-Toast" width="280">
+                <h3>Avocado-Toast</h3>
+                <p>Mit Ei oder ohne</p><strong>6,50 €</strong>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">© 2025 JavaBrew · Berlin</div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

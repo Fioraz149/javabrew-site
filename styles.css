@@ -1,0 +1,216 @@
+:root { --max:1100px; /* максимальная ширина контейнера */ --gap:16px;/* базовый отступ (gap) между элементами */ --bg:#0b0f1a;/* цвет фона сайта */ --fg:#f5f7fb;/* основной цвет текста */ --muted:#a8b0c3;/* приглушенный текст (например, описание) */ --card:#121829;/* цвет карточек */ --line:#25304a;/* цвет линий/границ */ --accent:#4cc9f0;/* акцентный цвет (кнопки, hover и т.д.) */ }
+
+/* Базовые сбросы */
+*{box-sizing:border-box} /* учитываем padding и border в ширине */
+html,body{height:100%} /* высота на весь экран */
+body{
+  margin:0; 
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto; 
+  color:var(--fg); 
+  background:var(--bg)
+}
+a{
+  color:inherit; 
+  text-decoration:none/* убираем подчёркивание */
+}
+
+img{
+  max-width: 100%; /* изображения не выходят за контейнер */
+  display: block
+}
+
+.container{
+  max-width:var(--max); /* ограничение ширины */
+  margin:0 auto; /* центрирование */
+  padding:32px var(--gap) /* отступы */
+}
+
+/* Кнопки */
+.btn{
+  display:inline-block; 
+  padding:.7rem 1rem; 
+  background:var(--accent); /* фон кнопки */
+  color:#052436; /* цвет текста в кнопке */
+  border-radius:.6rem; /* скругление */
+  font-weight:700
+}
+
+/* Шапка (header + меню) */
+.site-header{
+  position:sticky; /* фиксируем при скролле */
+  top:0; 
+  background:rgba(11,15,26,.7); /* прозрачный фон */
+  backdrop-filter:blur(8px); /* блюр позади */
+  border-bottom:1px solid var(--line); /* линия снизу */
+  z-index:10; /* поверх остального */
+}
+
+.nav{
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; /* логотип слева, меню справа */
+  gap:var(--gap); 
+  padding:12px var(--gap)
+}
+
+.logo{
+  font-weight:900; 
+  letter-spacing:.5px
+}
+
+.nav__menu{
+  display:flex; 
+  gap:1rem; 
+  list-style:none; 
+  padding:0; 
+  margin:0
+}
+
+.nav__toggle{ /* бургер-меню для мобильной версии */
+  display:none; 
+  background:none; 
+  border:1px solid var(--line); 
+  color:var(--fg); 
+  padding:.4rem .6rem; 
+  border-radius:.5rem;
+}
+
+/* Hero-блок с фоном */
+.hero {
+  position: relative;
+  min-height: 80vh; /* почти на весь экран */
+  padding: 72px var(--gap);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--fg);
+
+  /* путь к картинке: из css/ в папку Bilder */
+  background: url("../images/hero-bg.jpg") center/cover no-repeat;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  /* затемнение */
+  z-index: 0;
+}
+
+.hero * {
+  position: relative;
+  z-index: 1;
+  /* текст и кнопки поверх затемнения */
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 .5rem;
+}
+
+.hero p {
+  color: var(--muted);
+}
+
+/* Сетка (Grid) */
+.grid{
+  display:grid; 
+  gap:var(--gap);
+}
+.grid.two{
+  grid-template-columns:repeat(2,1fr); /* 2 колонки */
+}
+
+/* Адаптив: меньше 800px → одна колонка */
+@media (max-width: 800px){ 
+  .grid.two{grid-template-columns:1fr} 
+}
+
+/* Сетка меню (для карточек еды/напитков) */
+.menu-grid{
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr))
+}
+
+.card{
+  background:var(--card); 
+  border:1px solid var(--line); 
+  border-radius:.8rem; 
+  padding:1rem;
+}
+
+/* Подвал */
+.site-footer{
+  border-top:1px solid var(--line); 
+  text-align:center; 
+  opacity:.8;
+}
+
+/* Формы */
+.form{
+  display:grid; 
+  gap:.8rem; 
+  max-width:480px;
+}
+
+.form input,.form textarea{
+  width:100%; 
+  padding:.6rem .7rem; 
+  border:1px solid var(--line); 
+  border-radius:.5rem; 
+  background:#0f1526; 
+  color:var(--fg);
+}
+
+.form__msg{
+  color:var(--muted); 
+  margin-top:.4rem;
+}
+
+/* Мобильное меню */
+@media (max-width: 720px){
+  .nav__toggle{display:inline-block}
+  .nav__menu{
+    display:none; 
+    flex-direction:column; 
+    background:#0f1424; 
+    position:absolute; 
+    right:var(--gap); 
+    top:60px; 
+    padding:.5rem; 
+    border:1px solid var(--line); 
+    border-radius:.6rem;
+  }
+  .nav__menu.open{display:flex}
+}
+
+/* Ссылки меню */
+.nav__menu a:link,
+.nav__menu a:visited {
+  color: inherit; /* берут цвет родителя (белый) */
+  text-decoration: none;
+}
+
+/* берут цвет родителя (белый) */
+.nav__menu a.active {
+  color: #ff6600; /* оранжевый */
+  font-weight: 700; /* жирный */
+  border-bottom: 2px solid #ff6600; /* подчёркивание */
+}
+
+.filters .btn {
+  padding: .5rem .8rem;
+  /* компактные кнопки */
+}
+
+.filters {
+  margin-bottom: 1rem;
+  /* отступ вниз */
+  display: flex;
+  gap: .5rem;
+  /* промежутки между кнопками */
+  flex-wrap: wrap;
+  /* перенос кнопок на новую строку, если не помещаются */
+}
